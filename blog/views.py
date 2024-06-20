@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import TemplateView, ListView
 from django.urls import reverse_lazy
-from .forms import PostForm
+from .forms import PostForm, EditPost
 from .models import Post
 # Create your views here.
 
@@ -21,8 +21,14 @@ class CreatePost(CreateView):
     template_name = 'form_create.html'
     success_url = reverse_lazy('post_list')
 
-class EditPost(TemplateView):
-    template_name = 'edit_post.html'
+class EditPost(UpdateView):
+    model = Post
+    form_class = EditPost
+    template_name = 'form_edit.html'
+    success_url = 'post_list.html'
+
+    def get_success_url(self):
+        return reverse_lazy('post_detail', kwargs= {'pk': self.object.pk})
 
 class DeletePost(TemplateView):
     template_name = 'delete_post.html'

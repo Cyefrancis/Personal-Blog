@@ -1,17 +1,20 @@
 {% extends "./base.html" %}
-{% load static %}
+
 
 {% block content %}
 
 <h2>Posts</h2>
 
-<ul>
+<ul class="post_ul">
     {% for post in posts  %}
     <li>
         <h3>{{post.title}}</h3>
         <p>{{post.content}}</p>
-        <p><small>{{post.author}}</small></p>
+        <p><small>author: {{post.author}}</small></p>
+
+        <button class="btn btn-info btn-md"><a href="{% url "edit_post" %}">Edit</a></button>
     </li>
+    
     
     {% endfor %}
 </ul>

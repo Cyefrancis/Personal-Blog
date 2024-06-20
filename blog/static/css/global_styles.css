@@ -1,0 +1,16 @@
+
+.btn a{
+    text-decoration: none;
+    color: black;
+}
+.btn{
+    width: 100px;
+}
+.post_ul li{
+    padding: 2rem;
+    list-style: none;
+    margin-bottom: 20px;
+    background-color: bisque;
+    border-radius: 5px;
+    border: 2px solid black;
+}
