@@ -1,14 +1,13 @@
 {% extends "./base.html" %}
-
-
+{%block title%}Posts{%endblock%}
 {% block content %}
 
-<h2>Posts</h2>
+<h2 id="h2_post">Posts</h2>
 
 <ul class="post_ul">
     {% for post in posts  %}
     <li>
-        <h3>{{post.title}}</h3>
+        <h3 class="post-title">{{post.title}}</h3>
         <p>{{post.content}}</p>
         <p><small>author: {{post.author}}</small></p>
 

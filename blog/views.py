@@ -32,3 +32,6 @@ class EditPost(UpdateView):
 
 class DeletePost(TemplateView):
     template_name = 'delete_post.html'
+
+class Home(TemplateView):
+    template_name = 'home.html'
