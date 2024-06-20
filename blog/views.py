@@ -12,6 +12,9 @@ class PostList(ListView):
     template_name = 'post_list.html'
     context_object_name = 'posts'
 
+    def get_queryset(self):
+        return Post.objects.all().order_by('-created_date')
+
 class Details(TemplateView):
     template_name = 'post_detail.html'
 

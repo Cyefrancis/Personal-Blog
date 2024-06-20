@@ -10,10 +10,11 @@
     padding: 2rem;
     list-style: none;
     margin-bottom: 20px;
-    background-color: #FFF0E5;
+    background-color: #6c757d;
+    color: white;
     border-radius: 5px;
     border: 2px solid black;
 }
 .post_ul li h3{
-    color: #5131F3;
+    color: #57cc99;
 }

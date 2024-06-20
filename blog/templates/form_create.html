@@ -1,15 +1,15 @@
 {% extends "base.html" %}
-
+{% block title %}Post Creation{% endblock  %}
 {% block content %}
     <h1>{% if object %}Edit{% else %}Create{% endif %} Post</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">{% if object %}Save changes{% else %}Create Post{% endif %}</button>
+        <button type="submit" class="btn btn-success btn-sm">{% if object %}Save changes{% else %}Create Post{% endif %}</button>
     </form>
     {% if object %}
     <a href="{% url 'post_detail' object.pk %}">Cancel</a>
     {% else %}
-    <a href="{% url 'post_list' %}">Cancel</a>
+    <a href="{% url 'post_list' %}" class="btn btn-danger btn-sm mt-2">Cancel</a>
     {% endif %}
 {% endblock  %}
