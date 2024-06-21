@@ -6,5 +6,3 @@ class PostForm(ModelForm):
         model = Post
         fields = ['title','content','author']
 
-class EditPost(ModelForm):
-    pass

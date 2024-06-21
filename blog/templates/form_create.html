@@ -5,10 +5,10 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-success btn-sm">{% if object %}Save changes{% else %}Create Post{% endif %}</button>
+        <button type="submit" class="btn btn-success btn-xs">{% if object %}Save{% else %}Create Post{% endif %}</button>
     </form>
     {% if object %}
-    <a href="{% url 'post_detail' object.pk %}">Cancel</a>
+    <a href="{% url 'post_list'  %}" class="btn btn-danger btn-xs mt-3">Cancel</a>
     {% else %}
     <a href="{% url 'post_list' %}" class="btn btn-danger btn-sm mt-2">Cancel</a>
     {% endif %}
