@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import TemplateView, ListView
-from django.urls import reverse_lazy
-from .forms import PostForm
+from django.urls import reverse_lazy, reverse
+from .forms import PostForm, RegisterForm
 from .models import Post
+from django.contrib.auth.models import User
+from django.contrib.auth import login,authenticate
 # Create your views here.
 
 
@@ -40,3 +42,21 @@ class DeletePost(TemplateView):
 
 class Home(TemplateView):
     template_name = 'home.html'
+
+class Login():
+    pass
+
+def Register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.set_password(form.cleaned_data['password1'])
+            user.save()
+        #log the user in after registration
+            new_user = authenticate(username=user.username, password= form.cleaned_data['password1'])
+            login(request, new_user)
+            return redirect('home')
+    else:
+        form = RegisterForm()
+    return render(request, 'register.html', {'form': form})
